@@ -9,7 +9,7 @@ class players(APIView):
 
     def get(self, request):
         players = {'players':[]}
-        with open('players.csv') as csvfile:
+        with open('players.csv', 'r', encoding="utf-8") as csvfile:
             reader = csv.reader(csvfile)
             for row in reader:
                 if row[32]!="name":
@@ -23,7 +23,7 @@ class details(APIView):
 
     def get(self, request, pk):
         
-        with open('players.csv') as csvfile:
+        with open('players.csv', 'r', encoding="utf-8") as csvfile:
             reader = csv.reader(csvfile)
             for row in reader:
                 if row[9]+" "+row[10]==pk:
