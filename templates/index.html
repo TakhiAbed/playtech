@@ -1,0 +1,136 @@
+<html>
+<head>
+<title>index</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<style>
+.jumbotron{
+	width:auto;
+	height:auto;
+    margin-left:20;
+    background-color:white;
+	}
+li{
+font-size:20px;
+}
+</style>
+
+</head>
+
+<body>
+<div class="jumbotron">
+
+	<div class="back-button">
+        <button type="button" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-chevron-left"></span> Back
+        </button>
+		<strong>Statistics of player</strong>
+		</br>
+	</div>
+	
+<div class="players_list">
+	<ul id="names">
+
+	</ul>
+</div>
+<div class="details">
+
+</div>
+</div>
+<script type="text/javascript">
+$(document).ready(function() {
+	$('.back-button').hide()
+	var $names = $('#names');
+	
+	$.ajax({
+		type : 'GET',
+		url : '/players/',
+		success: function(names){
+			
+			for(i=0;i<names.players.length;i++){
+				var temp = names.players[i];
+				$names.append("<li onclick=\"clickFunction('"+temp+"')\">"+temp+"</li>");
+				//$names.append("<li onclick=\"clickFunction('vara')\">fhjdks</li>");
+			}
+		}
+	});
+	
+	$(document).on('click', '.back-button', function(e){
+		$('.details').empty();
+		$('.back-button').hide();
+		var $names = $('#names');
+		$.ajax({
+		type : 'GET',
+		url : '/players/',
+		success: function(names){
+			$('#names').empty();
+			$('.players_list').show();
+			for(i=0;i<names.players.length;i++){
+				var temp = names.players[i];
+				$names.append("<li onclick=\"clickFunction('"+temp+"')\">"+temp+"</li>");
+				//$names.append("<li onclick=\"clickFunction('vara')\">fhjdks</li>");
+			}
+		}
+	});
+	});
+	
+});
+function clickFunction(name){
+	
+	$.ajax({
+		type:'GET',
+		url:'/player/'+name+'/',
+		success: function(data){
+			$('.back-button').show();
+			$('.players_list').hide();
+			$('.details').append("<p>ranking :"+data.details[0]+"</p>");
+			$('.details').append("<p>seasonID :"+data.details[1]+"</p>");
+			$('.details').append("<p>seasonName :"+data.details[2]+"</p>");
+			$('.details').append("<p>tournamnetID :"+data.details[3]+"</p>");
+			$('.details').append("<p>tournamnetRegionID :"+data.details[4]+"</p>");
+			$('.details').append("<p>tournamnetRegionCode :"+data.details[5]+"</p>");
+			$('.details').append("<p>tournamnetCode :"+data.details[6]+"</p>");
+			$('.details').append("<p>tournamnetName :"+data.details[7]+"</p>");
+			$('.details').append("<p>tournamnetShortName :"+data.details[8]+"</p>");
+			$('.details').append("<p>first name :"+data.details[9]+"</p>");
+			$('.details').append("<p>last name :"+data.details[10]+"</p>");
+			$('.details').append("<p>playerID :"+data.details[11]+"</p>");
+			$('.details').append("<p>isActive :"+data.details[12]+"</p>");
+			$('.details').append("<p>isOpta :"+data.details[13]+"</p>");
+			$('.details').append("<p>teamID :"+data.details[14]+"</p>");
+			$('.details').append("<p>teamName :"+data.details[15]+"</p>");
+			$('.details').append("<p>playedPositions :"+data.details[16]+"</p>");
+			$('.details').append("<p>age :"+data.details[17]+"</p>");
+			$('.details').append("<p>height :"+data.details[18]+"</p>");
+			$('.details').append("<p>weight :"+data.details[19]+"</p>");
+			$('.details').append("<p>positionText :"+data.details[20]+"</p>");
+			$('.details').append("<p>apps :"+data.details[21]+"</p>");
+			$('.details').append("<p>subOn :"+data.details[22]+"</p>");
+			$('.details').append("<p>minsPlayed :"+data.details[23]+"</p>");
+			$('.details').append("<p>rating :"+data.details[24]+"</p>");
+			$('.details').append("<p>goal :"+data.details[25]+"</p>");
+			$('.details').append("<p>assistTotal :"+data.details[26]+"</p>");
+			$('.details').append("<p>YellowCard :"+data.details[27]+"</p>");
+			$('.details').append("<p>redCard :"+data.details[28]+"</p>");
+			$('.details').append("<p>shots per game :"+data.details[29]+"</p>");
+			$('.details').append("<p>aerialWonPerGame :"+data.details[30]+"</p>");
+			$('.details').append("<p>manOfthematch :"+data.details[31]+"</p>");
+			$('.details').append("<p>name :"+data.details[32]+"</p>");
+			$('.details').append("<p>isofthe match :"+data.details[33]+"</p>");
+			$('.details').append("<p>playedPositionShort :"+data.details[34]+"</p>");
+			$('.details').append("<p>passSuccess :"+data.details[25]+"</p>");
+			
+		}
+	});
+	
+}
+window.onbeforeunload = function () {
+   // put your code here
+   alert("vara");
+}
+</script>
+
+</body>
+</html>
