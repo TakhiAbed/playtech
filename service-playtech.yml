@@ -4,7 +4,7 @@ metadata:
   name: playtech
 spec: 
   type: NodePort 
-  port:
+  ports:
   - name: http
     port: 80
     targetport: 80
