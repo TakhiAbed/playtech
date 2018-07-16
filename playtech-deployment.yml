@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: playtech-deployment
+  labels:
+    app: playtech
+spec: 
+  replicas: 3
+  selector:
+    matchLabels:
+      app: playtech
+  template:
+    metadata:
+      labels:
+        app: playtech
+    spec: 
+      containers:
+      - name: playtech
+        image: takhiabed/playtech:app 
+        ports:
+        - containerPort: 80
+
