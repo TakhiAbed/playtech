@@ -8,5 +8,5 @@ RUN pip3 install django
 RUN pip3 install djangorestframework
 RUN git clone https://github.com/TakhiAbed/playtech.git
 WORKDIR "playtech"
-CMD python3 manage.py runserver 0.0.0.0:8000
+CMD python3 manage.py runserver
 
