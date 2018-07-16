@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: playtech
+  namespace: playtech
+spec: 
+  type: NodePort 
+  port:
+  - name: http
+    port: 80
+    targetport: 80
+    protocol: TCP
+selector: 
+  app: playtech
+  
