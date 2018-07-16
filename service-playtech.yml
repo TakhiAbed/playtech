@@ -5,9 +5,11 @@ metadata:
 spec: 
   selector:
     app: playtech
+  type: NodePort
   ports:
   - name: http
     port: 80
+    nodePort: 31223  
     protocol: TCP
-
+  
   
