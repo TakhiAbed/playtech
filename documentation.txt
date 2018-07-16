@@ -1,4 +1,4 @@
-1.I think to my knowledge, this is the easy solution I can come up with in this given time. I used python and Django because I have some knowledge of python and thought it would be an advantage if I used python and Django.
+1.I think to my knowledge, this is the easy solution I can come up with in this given time. I used python and Django because I have some knowledge of python and thought it would be an advantage if I used python and Django. I have used git to maintain the project easily.
 
 2.During the initial stages I had few problems I solved them one by one. I faced some problems writing the Docker and yml files but I think I have learnt from those problems
 
